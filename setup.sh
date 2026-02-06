@@ -6,7 +6,7 @@
 set -e
 
 NVIM_VERSION="v0.11.6"
-REPO="git@github.com:YOUR_USER/nvim-config.git"  # ← 自分のリポジトリに変更
+REPO="https://github.com/mararadoe/nvim-config.git"
 
 echo "==> Installing NeoVim ${NVIM_VERSION}..."
 mkdir -p ~/bin

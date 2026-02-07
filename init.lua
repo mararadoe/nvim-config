@@ -28,6 +28,21 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.clipboard  = "unnamedplus"   -- system clipboard
+
+-- OSC 52: clipboard over SSH (copy from remote to local)
+if os.getenv("SSH_TTY") then
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
+  }
+end
 opt.undofile   = true            -- persistent undo
 opt.scrolloff  = 8
 opt.updatetime = 250
